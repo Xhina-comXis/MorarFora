@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>🌍 | Mortar Fora</title>
+  <link rel="stylesheet" href= "/css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Morar <span>Fora</span></div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ebooks.html">eBooks</a>
+      <a href="auth.html">Login</a>
+      <a href="carrinho.html">Carrinho</a>
+    </nav>
+  </header>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Descubra oportunidades no exterior</h1>
+    <p>Guias completos por quem já conquistou a cidadania. Planeje sua nova vida com segurança.</p>
+    <a href="ebooks.html" class="cta">Conhecer eBooks</a>
+  </div>
+</section>
+  <a href="carrinho.html" style="position: fixed; bottom: 20px; right: 20px;
+    background: #0071e3; color: white; border-radius: 50%; padding: 15px;
+    font-size: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none; z-index: 1000;">🛒</a>
+
+  <div id="cart-hover" style="display:none; position:absolute; bottom:70px; right:20px; background:white; color:black;
+      border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.3); padding:1rem; width:200px; font-size:0.9rem; z-index:999;">
+    <strong>Prévia do Carrinho:</strong>
+    <ul id="hover-list"></ul>
+  </div>
+  <a href="carrinho.html" id="cart-button" style="position: fixed; bottom: 20px; right: 20px;
+    background: #0071e3; color: white; border-radius: 50%; padding: 15px;
+    font-size: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none; z-index: 1000;">🛒</a>
+  <script>
+    const cartButton = document.getElementById('cart-button');
+    const cartHover = document.getElementById('cart-hover');
+    const hoverList = document.getElementById('hover-list');
+    cartButton.addEventListener('mouseenter', () => {
+      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+      hoverList.innerHTML = '';
+      carrinho.slice(0, 3).forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        hoverList.appendChild(li);
+      });
+      if (carrinho.length === 0) {
+        hoverList.innerHTML = '<li>Vazio</li>';
+      }
+      cartHover.style.display = 'block';
+    });
+    cartButton.addEventListener('mouseleave', () => {
+      setTimeout(() => cartHover.style.display = 'none', 300);
+    });
+  </script>
+
+</body>
+</html>

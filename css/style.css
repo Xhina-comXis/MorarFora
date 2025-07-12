@@ -1,0 +1,355 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navigation */
+.navbar {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #0071e3;
+}
+
+nav a {
+  margin-left: 2rem;
+  font-size: 1rem;
+  color: #333;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #0071e3;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #000;
+  color: white;
+}
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: url('../image/mapamun.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 0;
+  animation: scrollMap 60s linear infinite;
+}
+
+.hero::after {
+  left: 100%;
+}
+
+@keyframes scrollMap {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 3rem;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 1;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta {
+  padding: 0.8rem 2rem;
+  background: #0071e3;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.cta:hover {
+  background: #005bb5;
+}
+
+/* Intro Section */
+.intro {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to right, #f39c12, #e74c3c);
+  color: white;
+}
+
+.intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Ebook Grid */
+.ebook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ebook, .placeholder {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.ebook button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: auto;
+  width: 100%;
+}
+
+.ebook button:hover {
+  background: #81adff;
+}
+
+.ebook img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.ebook h3 {
+  margin: 1rem 0 0.5rem;
+}
+
+.ebook p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.ebook:hover, .placeholder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.placeholder {
+  color: #777;
+  opacity: 0.4;
+}
+
+/* Form Section */
+.form-container {
+  padding: 2.5rem;
+  max-width: 500px;
+  margin: 4rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+form input:focus {
+  border-color: #0071e3;
+  outline: none;
+}
+
+form button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 1rem;
+}
+
+form button:hover {
+  background: #81adff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .ebook-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: 2rem 1rem;
+  }
+}
+
+/* Carrinho preview com transição */
+.carrinho-hover {
+  position: relative;
+}
+
+#carrinho-preview {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  background: white;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  display: flex;
+  gap: 0.5rem;
+  border-radius: 6px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.carrinho-hover:hover #carrinho-preview {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.img-preview {
+  width: 40px;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Itens no checkout */
+#checkout .item-carrinho {
+  text-align: center;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#checkout .item-carrinho img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+#checkout .item-carrinho h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+#checkout .item-carrinho p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Acessibilidade */
+button:focus,
+input:focus {
+  outline: 2px solid #0071e3;
+  outline-offset: 2px;
+}
