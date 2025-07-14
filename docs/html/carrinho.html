@@ -2,10 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-   <title>🌍 | Mortar Fora</title>
-  <link rel="stylesheet" href= "../css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🛒 | Seu Carrinho</title>
+  <link rel="stylesheet" href="../css/style.css" />
   <style>
-
+    /* Estilos específicos para o carrinho */
     .checkout-container {
       display: flex;
       max-width: 1200px;
@@ -92,7 +93,7 @@
       padding: 2rem;
       color: #777;
     }
-  </style>
+    </style>
 </head>
 <body>
   <header class="navbar">
@@ -107,62 +108,15 @@
 
   <div class="checkout-container">
     <div class="cart-items" id="lista-carrinho">
-      <!-- Produtos serão inseridos aqui via JavaScript -->
-    </div>
+      </div>
     <div class="cart-summary">
       <div class="summary-title">Resumo da Compra</div>
       <div class="summary-total" id="total">Total: R$ 0,00</div>
-      <button class="checkout-button" onclick="finalizarCompra()">Finalizar Compra</button>
+      <button class="checkout-button" id="finalizarCompraButton">Finalizar Compra</button>
     </div>
   </div>
 
-  <script>
-    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    const lista = document.getElementById('lista-carrinho');
-    const total = document.getElementById('total');
-    let soma = 0;
+  <script src="../js/script.js"></script>
 
-    if (carrinho.length === 0) {
-      lista.innerHTML = '<div class="empty-msg">Seu carrinho está vazio.</div>';
-    } else {
-      carrinho.forEach(item => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'cart-item';
-
-        const img = document.createElement('img');
-        img.src = item.imagem || `../image/${item.nome}-removebg-preview.png`
-        img.alt = item.nome;
-
-        const details = document.createElement('div');
-        details.className = 'cart-item-details';
-
-        const nome = document.createElement('h4');
-        nome.textContent = item.nome;
-
-        const preco = document.createElement('p');
-        preco.innerHTML = `<del>R$ 30,00</del> <strong>R$${item.preco.toFixed(2)}</strong>`;
-
-        details.appendChild(nome);
-        details.appendChild(preco);
-
-        wrapper.appendChild(img);
-        wrapper.appendChild(details);
-
-        lista.appendChild(wrapper);
-
-        soma += item.preco;
-      });
-
-      total.textContent = 'Total: R$ ' + soma.toFixed(2);
-    }
-
-    function finalizarCompra() {
-      alert('Compra finalizada com sucesso!');
-      localStorage.removeItem('carrinho');
-      window.location.href = 'carrinho.html';
-    }
-  </script>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> NOSSA BOB ESPONJA QUE PINTO ENORME
-</body>
 </body>
 </html>

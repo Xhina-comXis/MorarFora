@@ -356,3 +356,38 @@ input:focus {
   outline: 2px solid #0071e3;
   outline-offset: 2px;
 }
+
+.message-box {
+    padding: 1rem;
+    margin-top: 1.5rem; /* Espaçamento do formulário */
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0; /* Começa invisível */
+    transform: translateY(-10px); /* Começa um pouco acima */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Transição suave */
+    pointer-events: none; /* Não bloqueia cliques quando invisível */
+}
+
+.message-box.show {
+    opacity: 1; /* Torna visível */
+    transform: translateY(0); /* Desliza para a posição final */
+    pointer-events: auto; /* Permite cliques quando visível */
+}
+
+.message-box.success {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Texto verde escuro */
+    border: 1px solid #c3e6cb; /* Borda verde */
+}
+
+.message-box.error {
+    background-color: #f8d7da; /* Vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+    border: 1px solid #f5c6cb; /* Borda vermelha */
+}
+
+.message-box.hidden { /* Para esconder completamente via JS */
+    display: none; 
+}
